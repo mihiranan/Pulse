@@ -1,43 +1,46 @@
-# Pulse: AI-Powered Exercise Form Analysis
+# Pulse
 
-## The Exercise Form Analyzer – A Review
+AI exercise-form coach. Record a set — or pick one from your camera roll — and get scored feedback on posture, grip, form, and focus.
 
-This project involves the creation of a mobile application that leverages artificial intelligence to analyze exercise form from video recordings. It represents a critical exploration into computer vision, machine learning integration, and mobile application development for fitness and wellness.
+React Native + Expo prototype. Frames are pulled from the clip and sent to GPT-4 Vision.
 
-### Core Technologies
+## What it does
 
-- **React Native:** Cross-platform mobile application framework that enables development for both iOS and Android platforms using JavaScript and React principles.
+- Capture a set or import a clip
+- Sample key frames from the video
+- Score four categories from 1–10: posture, grip, form, concentration
+- Return notes you can use on the next set
 
-- **OpenAI GPT-4 Vision:** Advanced AI model that processes visual content to provide detailed analysis and feedback on exercise form and technique.
+## Stack
 
-- **Expo:** Development platform that simplifies React Native development with pre-built components and services for camera access, file management, and image processing.
+| Layer | Choice |
+| --- | --- |
+| App | Expo ~50, React Native 0.73 |
+| Analysis | OpenAI GPT-4 Vision |
+| Frames | `expo-av`, `expo-video-thumbnails`, `expo-image-manipulator` |
 
-- **Computer Vision Integration:** Real-time video processing and thumbnail generation to extract key frames for AI analysis, enabling comprehensive form assessment.
+## Run
 
-### Key Features
+```bash
+git clone https://github.com/mihiranan/Pulse.git
+cd Pulse
+npm install
+```
 
-* **Video Processing Pipeline:** The application supports video capture from both camera recording and gallery selection, with automatic thumbnail generation at regular intervals for comprehensive analysis.
-* **AI-Powered Form Analysis:** Integration with OpenAI's GPT-4 Vision model provides detailed feedback across four key categories: posture, grip, form, and concentration, each scored from 1-10.
-* **Cross-Platform Compatibility:** Built with React Native and Expo, ensuring consistent functionality across iOS and Android devices with native performance.
-* **Real-Time Feedback:** Immediate analysis and scoring system that provides actionable insights for improving exercise technique and form.
+Add an `.env` with:
 
----
+```
+OPENAI_API_KEY=your_key
+```
 
-## Reflection
+Then:
 
-### Design Considerations
-* **User Experience:** The design prioritizes intuitive video capture and analysis workflow, ensuring users can easily record exercises and receive meaningful feedback.
-* **Performance Optimization:** Considerations were made to balance image quality with processing speed, using compressed thumbnails and efficient API calls to maintain responsiveness.
-* **Accessibility:** Focus on providing clear, actionable feedback that users of all fitness levels can understand and implement in their training routines.
+```bash
+npx expo start
+```
 
-### Strengths:
-- **Comprehensive Analysis:** The AI integration provides detailed, multi-category feedback that covers all aspects of exercise form, offering users valuable insights for improvement.
-- **Seamless Integration:** The combination of video processing, AI analysis, and mobile interface creates a cohesive user experience that feels natural and intuitive.
-- **Scalable Architecture:** The modular component structure allows for easy expansion and modification of features, supporting future enhancements and additional exercise types.
+Press `i` / `a`, or scan the QR code with Expo Go.
 
-### Weaknesses:
-- **Dependency on External APIs:** The reliance on OpenAI's API introduces potential limitations in terms of cost, rate limits, and internet connectivity requirements.
-- **Limited Exercise Types:** As a custom implementation, the current version may not support all exercise variations or provide equally detailed feedback across different movement patterns.
+## Status
 
-### Conclusion
-"Pulse" project offers an innovative approach to fitness technology by combining mobile development with artificial intelligence. Through the implementation of video processing, AI-powered form analysis, and intuitive user interfaces, it provides a practical and educational experience in modern application development. The project stands as a testament to the potential of AI in enhancing personal fitness and the rich possibilities that emerge from integrating cutting-edge technology with everyday wellness practices.
+Portfolio prototype. Analysis depends on an OpenAI key and a network connection. Feedback quality varies by exercise and camera angle.
